@@ -19,9 +19,14 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const fillGenres = require("../api/src/funciones/fillGenres");
+const fillPlataforms = require("../api/src/funciones/fillPlataforms");
+
+// fillGenres();
+// fillPlataforms();
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });

@@ -1,3 +1,4 @@
+const { Router } = require("express");
 const axios = require("axios");
 const { Plataform } = require("../db.js");
 const API_KEY = "da38c86359b946108a9c60c9030353b2";
@@ -14,15 +15,17 @@ async function fillPlataforms() {
   const apiData = await axios.get(
     `https://api.rawg.io/api/platforms?key=${API_KEY}`
   );
-  const data = apiData.data.results;
+  const data = await apiData.data.results;
+  const apiData2 = await axios.get(apiData.data.next);
+  const data2 = await apiData2.data.results;
+  const data3 = [...data, ...data2];
   // --------Llenado de la tabla--------
-  data.forEach((e) => {
+  data3.forEach((e) => {
     Plataform.findOrCreate({
       where: { name: e.name },
     });
   });
-
-  return "Todo bien con las Plataforms";
+  console.log(data3.length + " Plataforms loaded...");
 }
 
 module.exports = fillPlataforms;

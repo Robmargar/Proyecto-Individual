@@ -1,3 +1,4 @@
+const { Router } = require("express");
 const axios = require("axios");
 const { Genre } = require("../db.js");
 
@@ -10,17 +11,16 @@ async function fillGenres() {
   const apiData = await axios.get(
     `https://api.rawg.io/api/genres?key=${API_KEY}`
   );
-  const data = apiData.data.results;
+  const data = await apiData.data.results;
 
   //--------Llenado de la tabla--------
-  data.forEach((e) => {
-    Genre.findOrCreate({
+  data.forEach(async (e) => {
+    await Genre.findOrCreate({
       where: { name: e.name },
     });
   });
-
+  console.log(data.length + " Genres loaded...");
   return "Todo bien con los Genres";
 }
-
 
 module.exports = fillGenres;
