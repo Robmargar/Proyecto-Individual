@@ -7,9 +7,9 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const instancias = await Plataform.findAll();
-    res.sendStatus(200).json(instancias);
+    res.status(200).json(instancias);
   } catch (err) {
-    res.sendStatus(500).json(err);
+    res.status(500).json(err);
   }
 });
 

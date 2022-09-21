@@ -39,8 +39,14 @@ router.get("/", async (req, res) => {
           const juegosbd = infobd.filter((e) =>
             e.name.toLowerCase().includes(req.query.name.toLowerCase())
           );
-          const juegos = [...juegosapi, ...juegosbd];
-          res.status(200).json(juegos);
+          const juegos = [...juegosbd, ...juegosapi].slice(0, 15);
+          if (juegos.length > 0) {
+            res.status(200).json(juegos);
+          } else {
+            res
+              .status(200)
+              .json(`No existen videojugos con el nombre: "${req.query.name}"`);
+          }
         }
       } catch (err) {
         return console.log(err);
