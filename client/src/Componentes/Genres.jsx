@@ -6,7 +6,6 @@ export default function Genres({genres}) {
     <div>
         {genres.map((gen)=>(
            <Gen
-           
             key={gen.id}
             name={gen.name}
            />

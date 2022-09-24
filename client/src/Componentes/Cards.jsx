@@ -10,6 +10,7 @@ export default function Cards({videogames}) {
             genres={vg.genres}
            />
         ))}
+
     </div>
   );
 }
