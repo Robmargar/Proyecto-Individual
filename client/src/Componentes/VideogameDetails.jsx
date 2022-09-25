@@ -1,9 +1,11 @@
 import React from 'react';
-// import Genres from './Genres';
-// import Platform from "./Platform";
+import Mapear from './Mapear';
 
 export default function VideogameDetails({name,img,description,fecha_lanzamiento,raiting,platforms,genres}) 
 {
+  genres=[{ name: "Indi" }, { name: "aventura" }];
+  platforms=[{ name: "pc" }, { name: "play-one" }];
+  
   return (
     <div className='Detail'>
         {console.log("estoy en detalles")}
@@ -15,9 +17,8 @@ export default function VideogameDetails({name,img,description,fecha_lanzamiento
           <span>{raiting}</span>
           <span>{fecha_lanzamiento}</span>
           <span>{description}</span>
-         
-          {/* <Genres genres={genres} /> */}
-          {/* <Platform platfomrs={platforms}/> */}
+          <Mapear type="check" items={genres}/>
+          <Mapear type="check" items={platforms}/>          
         </div>
     </div>
   )

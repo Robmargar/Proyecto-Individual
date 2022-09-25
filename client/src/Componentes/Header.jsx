@@ -7,11 +7,13 @@ export default function Header() {
   return (
     <header>
         <div>
-            <img src={pacman} alt="Logo" />
+          <img src={pacman} alt="Logo" />
         </div>
         <div>
-            <Searchbar/>
-            <Nav/>
+          <Searchbar/>
+        </div>
+        <div>
+          <Nav/>
         </div>
     </header>
   )

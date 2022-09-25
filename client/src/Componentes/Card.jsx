@@ -1,5 +1,5 @@
 import React from "react";
-import Genres from "./Genres";
+import Mapear from "./Mapear";
 
 
 export default function Card({img, name, genres}){
@@ -9,7 +9,8 @@ export default function Card({img, name, genres}){
             <div >
                 <div>{name}</div>
                 <img className="ImgCard" src={img} alt="imgVG"/>
-                <Genres genres={genres} / >    
+                <Mapear type="card" items={genres} / >    
+
             </div>
         </button>
     </a>

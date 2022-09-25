@@ -5,8 +5,7 @@ import Header from "./Componentes/Header.jsx";
 import Lan from "./Componentes/Lan.jsx";
 import Card from "./Componentes/Card.jsx";
 import VideogameDetails from "./Componentes/VideogameDetails";
-import Formulario from "./Componentes/Form"
-
+import Formulario from "./Componentes/Form";
 
 function App() {
   return (
@@ -27,12 +26,15 @@ function App() {
         <Route path="/home/detalle" exact>
           <h1>Detalle Videojuego</h1>
           <div>
-            <VideogameDetails  />
+            <VideogameDetails
+              name="beto"
+              img="https://www.educima.com/dibujo-para-colorear-jugar-con-bloques-dl22479.jpg"
+            />
           </div>
         </Route>
         <Route path="/home/crear" exact>
           <h1>Formulario</h1>
-          <Formulario/>
+          <Formulario />
         </Route>
       </Switch>
     </div>
