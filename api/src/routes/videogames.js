@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Router } = require("express");
 const router = Router();
-const { Videogame, Genre } = require("../db.js");
+const { Videogame } = require("../db.js");
 
 const API_KEY = "da38c86359b946108a9c60c9030353b2";
 
@@ -20,11 +20,17 @@ router.get("/", async (req, res) => {
           ` https://api.rawg.io/api/games?search=${req.query.name}&key=${API_KEY}`
         );
         if ((respuesta.data.count = 0)) {
-          return res
-            .status(404)
-            .json(
-              `No se encontraron coincidencias con el nombre ${req.query.name}`
-            );
+          const juegosbd = infobd.filter((e) =>
+            e.name.toLowerCase().includes(req.query.name.toLowerCase())
+          );
+          const juegos = [...juegosbd].slice(0, 15);
+          if (juegos.length > 0) {
+            res.status(200).json(juegos);
+          } else {
+            res
+              .status(200)
+              .json(`No existen videojugos con el nombre: "${req.query.name}"`);
+          }
         } else {
           const juegosapi = respuesta.data.results.map((e) => {
             return {
@@ -105,15 +111,17 @@ router.get("/:id", async (req, res) => {
       );
 
       const juegoapi = await data.data;
+
       respuesta = {
         id: juegoapi.id,
         name: juegoapi.name,
-        imagen: juegoapi.ackground_image,
-        descripcion: juegoapi.description,
+        imagen: juegoapi.background_image,
+        descripcion: juegoapi.description_raw,
         fecha_lanzamiento: juegoapi.released,
         raiting: juegoapi.rating,
         generos: juegoapi.genres.map((gen) => gen.name),
       };
+      // console.log(respuesta);
       res.status(200).json(respuesta);
     } else {
       respuesta = await Videogame.findByPk(id);
@@ -153,9 +161,8 @@ router.post("/", async (req, res) => {
       },
     });
     if (created) {
-      res
-        .status(200)
-        .json(`Videojuego "${juego.name}" creado con el id: ${juego.id}`);
+      console.log("JUEGO CREADO");
+      res.status(200).json(juego);
     } else {
       res.status(200).json("El videojuego ya existe.");
     }

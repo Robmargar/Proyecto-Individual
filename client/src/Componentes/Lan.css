@@ -1,0 +1,25 @@
+
+
+.Lan{
+  position: relative;
+  margin-top: 2%;
+  justify-content: center;
+}
+.LanBtn:hover{
+    background-color: rgb(251, 255, 1);
+    color:black;
+    border: 9px inset;
+   
+}
+
+.LanBtn{
+  position: relative;
+    background-color: rgb(252, 248, 42);
+    border-radius: 15px;
+    font-size: 30px;
+    color:rgb(71, 71, 6);
+    width: 400px;
+    height: 60px;
+    border: 5px outset;
+    border-color: black;  
+}

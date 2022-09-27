@@ -28,27 +28,7 @@
   color: #61dafb;
 }
 
-h1{
-  color:white;
-}
 
-.Detail{
-  background-image: url("./imagenes/warning.jpg");
-  
-  height: 500px;
-  width: 650px;
-  color:rgb(194, 190, 190);
-  text-align: center;
-}
-
-.ImgCard{
-  height: 300px;
-  width: 250px;
-}
-
-.Card{
-  border-radius: 25px;
-}
 
 @keyframes App-logo-spin {
   from {

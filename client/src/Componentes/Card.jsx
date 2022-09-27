@@ -1,18 +1,19 @@
-import React from "react";
+import {React} from 'react'
 import Mapear from "./Mapear";
+import "./Card.css"
 
 
-export default function Card({img, name, genres}){
+
+
+export default function Card({key,name,img,genres}){
     return (
-    <a href="/home/detalle" >
         <button className="Card">
             <div >
-                <div>{name}</div>
+                <div className='Name'>{name}</div>
                 <img className="ImgCard" src={img} alt="imgVG"/>
-                <Mapear type="card" items={genres} / >    
-
+                <div className='SubTitle'>Generos</div>
+                <Mapear type="card" items={genres} /> 
             </div>
         </button>
-    </a>
     );
 };

@@ -1,16 +1,16 @@
 import React from 'react'
 
-
+import "./Mapear.css"
 
 export default function Mapear({type,items,subtype,handleOnChangeBox}) {
 
 
     if(type==="card"){
       return (
-        <div>
+        <div className='Generos'>
             {items.map((item)=>(
-              <div key={item.id}>
-                {item.name} 
+              <div key={item} >
+                {item} 
               </div>
             ))}
         </div>

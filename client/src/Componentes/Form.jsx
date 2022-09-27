@@ -1,11 +1,12 @@
 import React,{useState} from 'react'
 import Mapear from './Mapear';
-
-
+import { postVideogame } from '../actions/videogamesActions';
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Formulario() {
-    const genres=[{ name: "Indi" }, { name: "aventura" }];
-    const platforms=[{ name: "pc" }, { name: "play-one" }];
+    const dispatch=useDispatch();
+    const genres=useSelector(state=>state.app.genres);
+    const platforms=useSelector(state=>state.app.plataforms)
     
     const [data, setData]=useState({
         name: "",
@@ -42,8 +43,9 @@ export default function Formulario() {
         setData(newData2);
         Validar(newData2);
         console.log(newData2);
+    
     }
-
+    
     function boton(errors){
         if(Object.keys(errors).length !== 0 ){
            return false;
@@ -66,7 +68,7 @@ export default function Formulario() {
             errors.fecha_lanzamiento="Fecha faltante"; 
         }
 
-        if(!input.raiting||input.raiting<=0){
+        if(!input.raiting){
             errors.raiting="Raiting faltante"; 
         }
 
@@ -85,7 +87,7 @@ export default function Formulario() {
     <form
         onSubmit={(e)=>{
         e.preventDefault();
-       
+        dispatch(postVideogame(data));
     }} 
     >
     
@@ -127,9 +129,11 @@ export default function Formulario() {
             id="rating"
             type="range"
             name="raiting"
-            value={data.raiting}
+            // value={data.raiting}
             min="0"
             max="5"
+                // value=".5"
+            step="0.01"
             onChange={handleOnChange}
             />
             <output htmlFor="id">{data.raiting}</output>
@@ -137,15 +141,15 @@ export default function Formulario() {
         </div>
 
         <div>
-            <>Generos</>
+            <h1>Generos</h1>
             <Mapear type="check" items={genres} subtype="generos" handleOnChangeBox={handleOnChangeBox}/> 
             {errors.generos && <span>"{errors.generos}"</span>} 
            
         </div>
 
         <div>
-            <>Plataformas</>
-            <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
+            <h1>Plataformas</h1>
+             <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
             {errors.plataformas && <span>"{errors.plataformas}"</span>}
         </div>
 

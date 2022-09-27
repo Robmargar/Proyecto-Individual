@@ -1,0 +1,16 @@
+.Nav{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   
+    padding: 20px 10px;  
+    font-size: 20px;
+    border-radius: 15px;
+    
+    
+}
+
+.Link{
+    text-decoration: none;
+    background-color: rgba(240, 248, 255, 0.74);
+    border-left: 2px solid rgba(159, 159, 160, 0.87);
+    color :black;
+}
