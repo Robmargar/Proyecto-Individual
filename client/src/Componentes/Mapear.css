@@ -1,8 +1,23 @@
 .Generos{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 2px;
   justify-content: center;
-  gap:5 px;
-  padding: 10px;
+  font-size: 1rem;
+ color:rgb(226, 214, 214);
+}
+
+.Generoscheck{
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.25rem;
+  
+  font-size: 1rem;
+  
+  text-align: left;
+
+  border: 6px solid rgba(4, 167, 4, 0.781);
+  background-color:  rgba(240, 248, 255, 0.697) ;
+  border-radius: 1.5rem;
 }

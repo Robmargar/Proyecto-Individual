@@ -27,11 +27,18 @@
 }
 
 .DataDetail{
-     padding-right: 3rem;
+     padding: 1.7rem;
+     background-color: rgba(109, 12, 12, 0.332);
+     border-radius: 2rem;
 }
 
 .Data{
      display:flex;
+}
+
+.Data2{
+     display:flex;
+     justify-content: center;
 }
 
 .Description{

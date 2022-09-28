@@ -21,7 +21,7 @@ export default function Searchbar() {
     <form 
       onSubmit={(e)=>{
        e.preventDefault();
-      dispatch(getVideogames(data));
+      dispatch(getVideogames(data.name));
     }}> 
     
       <div className='Search'>

@@ -3,11 +3,19 @@ import Mapear from './Mapear';
 import { postVideogame } from '../actions/videogamesActions';
 import { useSelector, useDispatch } from "react-redux";
 
+import "./Form.css"
+
 export default function Formulario() {
     const dispatch=useDispatch();
     const genres=useSelector(state=>state.app.genres);
     const platforms=useSelector(state=>state.app.plataforms)
+   
     
+//    const platforms=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
+//    const genres=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
+  
+
+
     const [data, setData]=useState({
         name: "",
         descripcion: "",
@@ -84,77 +92,85 @@ export default function Formulario() {
     }
 
     return (
-    <form
-        onSubmit={(e)=>{
-        e.preventDefault();
-        dispatch(postVideogame(data));
-    }} 
-    >
-    
+    <div className='AllForm'>
         <div>
-            <input
-            type="text"
-            placeholder="Nombre del Videojuego"
-            name="name"
-            value={data.name}
-            onChange={handleOnChange}
-            />
-            {errors.name && <span>"{errors.name}"</span>}
-        </div>
+            {sinerrores &&<button type='submit' className='BtnEnviar' > Crear Videojuego</button>}
+        </div> 
+        <form
+            className="Form"
+            onSubmit={(e)=>{
+            e.preventDefault();
+            dispatch(postVideogame(data));
+        
+        }} 
+        >
+        
+            <div className='Closter'>
+                <input
+                type="text"
+                className={errors.name? "Danger":"PlaceForm"}
+                placeholder="Nombre del Videojuego"
+                name="name"
+                value={data.name}
+                onChange={handleOnChange}
+                />
+                {/* {errors.name && <span>"{errors.name}"</span>} */}
+            </div>
 
-        <div>
-            <input
-            type="text"
-            placeholder="Descripción"
-            name="descripcion"
-            value={data.descripcion}
-            onChange={handleOnChange}
-            />
-            {errors.descripcion && <span>"{errors.descripcion}"</span>}
-        </div>
+            <div className='Closter'>
+                <input
+                className={errors.fecha_lanzamiento? "Danger":"PlaceForm"}
+                type="date"
+                name="fecha_lanzamiento"
+                value={data.fecha_lanzamiento}
+                onChange={handleOnChange}
+                />
+                {/* {errors.fecha_lanzamiento && <span>"{errors.fecha_lanzamiento}"</span>} */}
+            </div>
+            <div className='Closter'>
+                <input
+                type= "text"
+                className={errors.descripcion? "Danger":"PlaceForm"}
+                placeholder="Descripción"
+                name="descripcion"
+                value={data.descripcion}
+                onChange={handleOnChange}
+                />
+                {/* {errors.descripcion && <span>"{errors.descripcion}"</span>} */}
+            </div>
 
-        <div>
-            <input
-            type="date"
-            name="fecha_lanzamiento"
-            value={data.fecha_lanzamiento}
-            onChange={handleOnChange}
-            />
-            {errors.fecha_lanzamiento && <span>"{errors.fecha_lanzamiento}"</span>}
-        </div>
-
-        <div>
-            <>Rating</>
-            <input
-            id="rating"
-            type="range"
-            name="raiting"
-            // value={data.raiting}
-            min="0"
-            max="5"
-                // value=".5"
-            step="0.01"
-            onChange={handleOnChange}
-            />
+            <div >
+                <h1 className={errors.raiting? "Error":"CheckForm"} >Rating</h1>
+                <input className='Rait'
+                id="rating"
+                type="range"
+                name="raiting"
+                value={data.raiting}
+                min="0"
+                max="5"
+                step="0.01"
+                onChange={handleOnChange}
+                />
             <output htmlFor="id">{data.raiting}</output>
-            {errors.raiting && <span>"{errors.raiting}"</span>}
-        </div>
+                {/* {errors.raiting && <span>"{errors.raiting}"</span>} */}
+            </div>
 
-        <div>
-            <h1>Generos</h1>
-            <Mapear type="check" items={genres} subtype="generos" handleOnChangeBox={handleOnChangeBox}/> 
-            {errors.generos && <span>"{errors.generos}"</span>} 
-           
-        </div>
 
-        <div>
-            <h1>Plataformas</h1>
-             <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
-            {errors.plataformas && <span>"{errors.plataformas}"</span>}
-        </div>
+            <div>
+                <h1 className={errors.generos? "Error":"CheckForm"}>Generos</h1>
+                <Mapear type="check" items={genres} subtype="generos" handleOnChangeBox={handleOnChangeBox}/> 
+                {/* {errors.generos && <span>"{errors.generos}"</span>}  */}
+            
+            </div>
 
-        {sinerrores &&<button type='submit' className='enviar' > Crear Videojuego</button>}
-    </form>
+            <div>
+                <h1 className={errors.plataformas? "Error":"CheckForm"}>Plataformas</h1>
+                <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
+                {/* {errors.plataformas && <span>"{errors.plataformas}"</span>} */}
+            </div>
 
+        
+        </form>
+    </div>   
   )
 }

@@ -1,15 +1,13 @@
-
-
 .Lan{
   position: relative;
   margin-top: 2%;
   justify-content: center;
 }
+
 .LanBtn:hover{
     background-color: rgb(251, 255, 1);
     color:black;
     border: 9px inset;
-   
 }
 
 .LanBtn{
@@ -22,4 +20,14 @@
     height: 60px;
     border: 5px outset;
     border-color: black;  
+}
+.load{
+  position:relative;
+  display: flex;
+  margin-left: 39rem;
+}
+
+.Maquinita{
+  position:relative;
+  margin-top: 0px;
 }

@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const instancias = await Genre.findAll();
-    console.log(instancias);
+    // console.log(instancias);
     res.status(200).json(instancias);
   } catch (err) {
     res.status(500).json(err);

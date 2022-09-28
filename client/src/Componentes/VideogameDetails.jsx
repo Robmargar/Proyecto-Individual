@@ -47,7 +47,7 @@ export default function VideogameDetails()
             <div >
               <h2 className='Data'>Rating:    {vid.raiting}</h2>
               <h2 className='Data'>Fecha Lanzamiento:   {vid.fecha_lanzamiento}</h2>
-              <h3 className='Data'>Generos: </h3>
+              <h2 className='Data2'>Generos: </h2>
               {vid.generos&&<Mapear type="card" items={vid.generos}/>}
             </div>
           </div>

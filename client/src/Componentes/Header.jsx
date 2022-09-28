@@ -12,7 +12,7 @@ import "./Header.css";
 export default function Header() {
   // Revisar();
   return (
-    <header>
+    <header className='Back'>
         <div className='Header'>
           <Link to="/home" ><img src={pacman} alt="Logo" className='Pcman' /></Link>
           <Searchbar />

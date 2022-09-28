@@ -28,7 +28,6 @@ function App() {
               </div>
             </Route>
             <Route path="/home/crear" exact>
-              <h1>Formulario</h1>
               <Formulario />
             </Route>
           </Switch>

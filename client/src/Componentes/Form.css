@@ -1,0 +1,145 @@
+.AllForm{
+    position:relative;
+    background-color: rgba(179, 255, 0, 0.57);  
+    background-image: url("../imagenes/pcman.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Form{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    padding: 1rem;
+    gap: 2rem; 
+    /* align-content: center; */
+    text-align: center;
+    align-content: center;
+    justify-content: center;   
+}
+
+.PlaceForm{
+    position: relative;
+    border-radius: 1.5rem;
+    border: 6px solid rgba(4, 167, 4, 0.781);
+    width: 400px;
+    height: 3rem;
+    border-radius: 1.5rem;
+    border: 6px solid rgba(4, 167, 4, 0.781);
+    color:rgba(47, 79, 79, 0.842);
+    background-color:  rgba(240, 248, 255, 0.697) ;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    
+}
+
+.Danger{
+    position: relative;
+    border-radius: 1.5rem;
+    border: 6px solid rgba(209, 4, 4, 0.801);
+    width: 400px;
+    height: 3rem;
+    color:rgba(47, 79, 79, 1);
+    background-color:  rgba(240, 248, 255, 0.697) ;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.BtnEnviar{
+    position: relative;
+      background-color: rgb(252, 248, 42);
+      border-radius: 15px;
+      font-size: 30px;
+      color:rgb(71, 71, 6);
+      width: 400px;
+      height: 60px;
+      border: 5px solid black ;
+  }
+
+.BtnEnviar:hover{
+    background-color: rgb(251, 255, 1);
+    color:black;
+    border: 7px solid black ;
+}
+.Rating{
+    color: rgba(4, 167, 4, 0.781);
+    font-size: 2rem;
+    font-weight: bold;  
+}
+.NoRating{
+    color:rgba(209, 4, 4, 0.801);
+    font-size: 2rem;
+    font-weight: bold;  
+}
+
+.Error{
+    color:rgba(209, 4, 4, 0.801);
+    justify-content: center;  
+  border: 6px solid rgba(209, 4, 4, 0.801);
+  background-color:  rgba(240, 248, 255, 0.697) ;
+  border-radius: 1.5rem;
+      
+}
+
+.CheckForm{
+    position: relative;
+    color: rgba(4, 167, 4, 0.781);
+    justify-content: center; 
+  border: 6px solid rgba(4, 167, 4, 0.781);
+  background-color:  rgba(240, 248, 255, 0.697) ;
+  border-radius: 1.5rem;
+}
+
+.Closter{
+    padding-top: 0.25rem;
+}
+
+.RatingValue{
+    background-color: aqua;
+}
+
+.Rait{
+    border: 3px solid rgba(4, 167, 4, 0.781);
+    background-color:  rgba(240, 248, 255, 0.697) ;
+    border-radius: 10px;
+}
+output{
+    width: 90px;
+
+    background-color:  rgba(24, 140, 241, 0.697) ;
+    border: 3px solid rgba(4, 167, 4, 0.781);
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    color: rgb(190, 188, 188);
+    
+}
+/* .DescBox{
+    position: relative;
+    border-radius: 1.5rem;
+    border: 6px solid rgba(4, 167, 4, 0.781);
+    width: 400px;
+    height: 15rem;
+    color:rgba(47, 79, 79, 0.842);
+    background-color:  rgba(240, 248, 255, 0.697) ;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.NoDescBox{
+    position: relative;
+    border-radius: 1.5rem;
+    border: 6px solid rgba(209, 4, 4, 0.801);
+    width: 300px;
+    height: 15rem;
+    color:rgba(47, 79, 79, 1);
+    background-color:  rgba(240, 248, 255, 0.697) ;
+    font-size: 1.5rem;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+} */
