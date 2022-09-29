@@ -1,0 +1,12 @@
+.Home{
+    position:relative;
+    background-image: url("../imagenes/arc.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color:white;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* border: 4px solid white ; */
+    padding: 0.5rem;
+}

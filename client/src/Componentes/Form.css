@@ -12,6 +12,7 @@
     padding: 1rem;
     gap: 2rem; 
     /* align-content: center; */
+    background-color: rgba(0, 0, 0, 0.65);
     text-align: center;
     align-content: center;
     justify-content: center;   
@@ -103,6 +104,7 @@
     background-color:  rgba(240, 248, 255, 0.697) ;
     border-radius: 10px;
 }
+
 output{
     width: 90px;
 

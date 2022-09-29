@@ -1,0 +1,75 @@
+
+.TitleFiltros{
+    border: 2px solid rgba(9, 67, 284, 0.881);
+    background-color:  rgba(2, 46, 85, 0.897) ;
+    border-radius: 0.75rem;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0.15rem;
+
+    font-size: 1.25rem;
+    font-weight: bold;
+
+    padding: 0.25rem;
+    padding-left: 0.75rem;
+}
+
+.TitleOrden{
+    border: 2px solid rgba(9, 67, 284, 0.881);
+    background-color:  rgba(2, 46, 85, 0.897) ;
+    border-radius: 0.75rem;
+
+    margin-top: 0.5rem;
+    margin-bottom: 0.15rem;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    padding: 0.25rem;
+    padding-left: 0.75rem;
+}
+
+.TitleF{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 2.5rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 0.25rem;
+
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    background: radial-gradient(circle, rgba(13,51,246,0.2) 0%, rgba(53,251,42,0.2) 74%);
+}
+
+.InputFiltros{
+    width: 340px;
+    height: 30px;
+    border-radius: 0.75rem;
+
+    background-color:  rgba(240, 248, 255, 0.897) ;
+    border: 2px solid rgba(9, 67, 284, 0.881);
+    margin-bottom: 4px;  
+    margin-top: 15px;
+}
+
+.BtnOrden{
+    width: 90px;
+    height: 38px;
+    border-radius: 1rem;
+
+    background-color:  rgba(240, 248, 255, 0.74);
+    border: 2px solid rgba(9, 67, 284, 0.881);  
+    font-size: 1.2rem;
+
+    margin-top: 0.20rem;
+    margin-bottom: 0.75rem;
+ 
+}
+
+.BtnOrden:hover{
+    background-color:  rgba(240, 248, 255, 0.94);
+    border: 2px solid rgba(9, 67, 284, 1); 
+}

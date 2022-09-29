@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import Mapear from './Mapear';
 import { useSelector, useDispatch } from "react-redux";
 import { getVideogamesId} from "../actions/videogamesActions.js"
+import defult from "../imagenes/default.jpg"
 
 import "./VideogameDetails.css"
 
@@ -28,15 +29,16 @@ export default function VideogameDetails()
   }, [dispatch,code]);
 
 
+
   return (
     <div className='All'>
+      <button className='Cerrar'>X</button>
       <div className='NameDetail'>{vid.name}</div>
-      <div className='Detail'>
-       
+        <div className='Detail'>
           <div >
-              <img className="ImgDetail" src={vid.imagen} alt="imgVG"/>
+          {/* className={errors.fecha_lanzamiento? "Danger":"PlaceForm"} */}
+              <img className="ImgDetail" src={vid.imagen?vid.imagen:defult} alt="imgVG"/>
           </div>
-
           <div className='DataDetail'>
             <div>
               <div>
@@ -50,9 +52,8 @@ export default function VideogameDetails()
               <h2 className='Data2'>Generos: </h2>
               {vid.generos&&<Mapear type="card" items={vid.generos}/>}
             </div>
-          </div>
-        
-      </div>         
+          </div>    
+        </div>         
     </div>
   );
 }

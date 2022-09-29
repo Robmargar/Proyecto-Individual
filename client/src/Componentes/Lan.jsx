@@ -1,7 +1,7 @@
 import {React} from 'react';
 import Revisar from '../funciones/revisar';
 import maquinita from '../imagenes/maquinita.jpg';
-import loading from '../imagenes/loading.gif';
+import loading2 from '../imagenes/loading2.gif';
 import { Link } from 'react-router-dom';
 import { useSelector} from "react-redux";
 
@@ -19,7 +19,7 @@ export default function Lan() {
         </div>
         <div>
           <Link to="/home">
-          {entrar.backup.length>0?<h1><button className="LanBtn">Entrar</button></h1>: <img className='load' src={loading} alt="Img de Carga" />}
+          {entrar.backup.length>0?<h1><button className="LanBtn">Entrar</button></h1>: <img className='load' src={loading2} alt="Img de Carga" />}
           </Link>
         </div>   
     </div>

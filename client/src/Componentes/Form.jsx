@@ -36,7 +36,7 @@ export default function Formulario() {
         setData(newData);
         Validar(newData);
      
-    }
+    };
 
     
     const handleOnChangeBox=(e)=>{
@@ -139,7 +139,7 @@ export default function Formulario() {
                 {/* {errors.descripcion && <span>"{errors.descripcion}"</span>} */}
             </div>
 
-            <div >
+            <div className='AllRait'>
                 <h1 className={errors.raiting? "Error":"CheckForm"} >Rating</h1>
                 <input className='Rait'
                 id="rating"
@@ -151,7 +151,9 @@ export default function Formulario() {
                 step="0.01"
                 onChange={handleOnChange}
                 />
-            <output htmlFor="id">{data.raiting}</output>
+                <div >
+                    <output htmlFor="id">{data.raiting}</output>
+                </div>
                 {/* {errors.raiting && <span>"{errors.raiting}"</span>} */}
             </div>
 

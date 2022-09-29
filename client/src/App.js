@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 import Header from "./Componentes/Header.jsx";
 import Lan from "./Componentes/Lan.jsx";
-import Cards from "./Componentes/Cards";
+import Home from "./Componentes/Home";
 import VideogameDetails from "./Componentes/VideogameDetails";
 import Formulario from "./Componentes/Form";
 
@@ -17,10 +17,7 @@ function App() {
           <Route path="/home" component={Header} />
           <Switch>
             <Route path="/home" exact>
-              <h1> Home</h1>
-              <div>
-                <Cards />
-              </div>
+              <Home/>
             </Route>
             <Route path="/home/detalle/:id" exact>
               <div>

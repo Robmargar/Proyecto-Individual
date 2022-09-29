@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import{getVideogames} from "../actions/videogamesActions";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import "./Searchbar.css"
 

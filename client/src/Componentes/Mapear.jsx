@@ -33,6 +33,21 @@ export default function Mapear({type,items,subtype,handleOnChangeBox}) {
       );
     }
 
+    if(type==="checkfilter"){
+      function handleChanges(e){
+        handleOnChangeBox(e);
+      };
+      return(
+        <div className='GeneroscheckFilter'>        
+            {items.map((item)=>(
+              <div key={item.name}>
+                <input type="checkbox" name={subtype} value={item.name} id={item.name} onChange={handleChanges}/>
+                <label>{item.name}</label><br/>
+              </div>
+            ))}
+        </div>
+      );
+    }
 
 
 }
