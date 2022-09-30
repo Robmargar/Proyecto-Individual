@@ -2,15 +2,16 @@ import React,{useEffect} from 'react';
 import { useParams } from 'react-router';
 import Mapear from './Mapear';
 import { useSelector, useDispatch } from "react-redux";
-import { getVideogamesId} from "../actions/videogamesActions.js"
-import defult from "../imagenes/default.jpg"
+import { getVideogamesId } from "../actions/videogamesActions.js";
+import defult from "../imagenes/default.jpg";
+import { Link } from "react-router-dom"
 
 import "./VideogameDetails.css"
+
 
 export default function VideogameDetails() 
 {
   const code=useParams();
-  console.log(code.id);
   const dispatch = useDispatch();  
 
   const vid= useSelector(state=> state.videogames.gamedetail);
@@ -32,7 +33,9 @@ export default function VideogameDetails()
 
   return (
     <div className='All'>
-      <button className='Cerrar'>X</button>
+      <Link to="/home">
+          {<button className='Cerrar'>X</button>}
+      </Link> 
       <div className='NameDetail'>{vid.name}</div>
         <div className='Detail'>
           <div >

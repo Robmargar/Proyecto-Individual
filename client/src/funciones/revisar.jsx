@@ -1,6 +1,6 @@
 
 import {useEffect} from 'react'
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getValues } from '../actions/appActions';
 import { getVideogames } from '../actions/videogamesActions';
 
@@ -17,7 +17,7 @@ export default function Revisar() {
         // console.log("llene los generos ");
         // }
         // if(plat.length===0){
-        dispatch(getValues("plataforms"));
+         dispatch(getValues("plataforms"));
         // console.log("llene las plataformas");
         // }
         // if(vid.length===0){

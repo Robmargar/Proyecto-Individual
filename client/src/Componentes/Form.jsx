@@ -13,9 +13,6 @@ export default function Formulario() {
     
 //    const platforms=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
 //    const genres=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
-  
-
-
     const [data, setData]=useState({
         name: "",
         descripcion: "",
@@ -35,7 +32,7 @@ export default function Formulario() {
         const newData={...data,[e.target.name]:e.target.value};
         setData(newData);
         Validar(newData);
-     
+        // console.log(newData);
     };
 
     
@@ -50,7 +47,7 @@ export default function Formulario() {
         let newData2={...data, [e.target.name]:newArray};  
         setData(newData2);
         Validar(newData2);
-        console.log(newData2);
+        // console.log(newData2);
     
     }
     
@@ -90,87 +87,97 @@ export default function Formulario() {
         setErrors(errors);
         setSinErrores(boton(errors));
     }
+    const def={
+        name: "",
+        descripcion: "",
+        fecha_lanzamiento: "",
+        raiting: "",
+        plataformas: [],
+        generos: []
+    };
 
+  
     return (
     <div className='AllForm'>
-        <div>
-            {sinerrores &&<button type='submit' className='BtnEnviar' > Crear Videojuego</button>}
-        </div> 
         <form
-            className="Form"
+           
             onSubmit={(e)=>{
-            e.preventDefault();
+            e.preventDefault();  
             dispatch(postVideogame(data));
-        
+            e.target.reset();
+            setData(def);
         }} 
         >
-        
-            <div className='Closter'>
-                <input
-                type="text"
-                className={errors.name? "Danger":"PlaceForm"}
-                placeholder="Nombre del Videojuego"
-                name="name"
-                value={data.name}
-                onChange={handleOnChange}
-                />
-                {/* {errors.name && <span>"{errors.name}"</span>} */}
-            </div>
-
-            <div className='Closter'>
-                <input
-                className={errors.fecha_lanzamiento? "Danger":"PlaceForm"}
-                type="date"
-                name="fecha_lanzamiento"
-                value={data.fecha_lanzamiento}
-                onChange={handleOnChange}
-                />
-                {/* {errors.fecha_lanzamiento && <span>"{errors.fecha_lanzamiento}"</span>} */}
-            </div>
-            <div className='Closter'>
-                <input
-                type= "text"
-                className={errors.descripcion? "Danger":"PlaceForm"}
-                placeholder="Descripción"
-                name="descripcion"
-                value={data.descripcion}
-                onChange={handleOnChange}
-                />
-                {/* {errors.descripcion && <span>"{errors.descripcion}"</span>} */}
-            </div>
-
-            <div className='AllRait'>
-                <h1 className={errors.raiting? "Error":"CheckForm"} >Rating</h1>
-                <input className='Rait'
-                id="rating"
-                type="range"
-                name="raiting"
-                value={data.raiting}
-                min="0"
-                max="5"
-                step="0.01"
-                onChange={handleOnChange}
-                />
-                <div >
-                    <output htmlFor="id">{data.raiting}</output>
+            <div>
+                {sinerrores &&<button type='submit' className='BtnEnviar'> Crear Videojuego</button>}
+            </div> 
+            <div  className="Form">
+                <div className='Closter'>
+                    <input
+                    type="text"
+                    className={errors.name? "Danger":"PlaceForm"}
+                    placeholder="Nombre del Videojuego"
+                    name="name"
+                    value={data.name}
+                    onChange={handleOnChange}
+                    />
+                    {/* {errors.name && <span>"{errors.name}"</span>} */}
                 </div>
-                {/* {errors.raiting && <span>"{errors.raiting}"</span>} */}
+
+                <div className='Closter'>
+                    <input
+                    className={errors.fecha_lanzamiento? "Danger":"PlaceForm"}
+                    type="date"
+                    name="fecha_lanzamiento"
+                    value={data.fecha_lanzamiento}
+                    onChange={handleOnChange}
+                    />
+                    {/* {errors.fecha_lanzamiento && <span>"{errors.fecha_lanzamiento}"</span>} */}
+                </div>
+                <div className='Closter'>
+                    <input
+                    type= "text"
+                    className={errors.descripcion? "Danger":"PlaceForm"}
+                    placeholder="Descripción"
+                    name="descripcion"
+                    value={data.descripcion}
+                    onChange={handleOnChange}
+                    />
+                    {/* {errors.descripcion && <span>"{errors.descripcion}"</span>} */}
+                </div>
+
+                <div className='AllRait'>
+                    <h1 className={errors.raiting? "Error":"CheckForm"} >Rating</h1>
+                    <input className='Rait'
+                    id="rating"
+                    type="range"
+                    name="raiting"
+                    value={data.raiting}
+                    min="0"
+                    max="5"
+                    step="0.01"
+                    onChange={handleOnChange}
+                    />
+                    <div >
+                        <output htmlFor="id">{data.raiting}</output>
+                    </div>
+                    {/* {errors.raiting && <span>"{errors.raiting}"</span>} */}
+                </div>
+
+
+                <div>
+                    <h1 className={errors.generos? "Error":"CheckForm"}>Generos</h1>
+                    <Mapear type="check" items={genres} subtype="generos" handleOnChangeBox={handleOnChangeBox}/> 
+                    {/* {errors.generos && <span>"{errors.generos}"</span>}  */}
+                
+                </div>
+
+                <div>
+                    <h1 className={errors.plataformas? "Error":"CheckForm"}>Plataformas</h1>
+                    <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
+                    {/* {errors.plataformas && <span>"{errors.plataformas}"</span>} */}
+                </div>
             </div>
-
-
-            <div>
-                <h1 className={errors.generos? "Error":"CheckForm"}>Generos</h1>
-                <Mapear type="check" items={genres} subtype="generos" handleOnChangeBox={handleOnChangeBox}/> 
-                {/* {errors.generos && <span>"{errors.generos}"</span>}  */}
-            
-            </div>
-
-            <div>
-                <h1 className={errors.plataformas? "Error":"CheckForm"}>Plataformas</h1>
-                <Mapear type="check" items={platforms} subtype="plataformas" handleOnChangeBox={handleOnChangeBox}/>  
-                {/* {errors.plataformas && <span>"{errors.plataformas}"</span>} */}
-            </div>
-
         
         </form>
     </div>   

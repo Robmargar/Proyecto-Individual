@@ -24,8 +24,8 @@ export default function Mapear({type,items,subtype,handleOnChangeBox}) {
       return(
         <div className='Generoscheck'>        
             {items.map((item)=>(
-              <div key={item.name}>
-                <input type="checkbox" name={subtype} value={item.name} id={item.name} onChange={handleChanges}/>
+              <div key={item.id}>
+                <input type="checkbox" name={subtype} value={item.name} id={item.id} onChange={handleChanges}/>
                 <label>{item.name}</label><br/>
               </div>
             ))}
@@ -41,7 +41,7 @@ export default function Mapear({type,items,subtype,handleOnChangeBox}) {
         <div className='GeneroscheckFilter'>        
             {items.map((item)=>(
               <div key={item.name}>
-                <input type="checkbox" name={subtype} value={item.name} id={item.name} onChange={handleChanges}/>
+                <input type="radio" name={item.name} value={item.name} id={item.id} onChange={handleChanges}/>
                 <label>{item.name}</label><br/>
               </div>
             ))}

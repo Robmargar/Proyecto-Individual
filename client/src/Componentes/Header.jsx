@@ -3,14 +3,12 @@ import Searchbar from './Searchbar.jsx'
 import pacman from '../imagenes/pacman.gif'
 import Nav from './Nav'
 import {Link} from 'react-router-dom';
-import Revisar from '../funciones/revisar.jsx'
 
 
 import "./Header.css";
 
 
-export default function Header() {
-  // Revisar();
+export default function Header() {  
   return (
     <header className='Back'>
         <div className='Header'>

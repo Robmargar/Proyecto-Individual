@@ -9,8 +9,9 @@ import "./Cards.css"
 
 export default function Cards() {
 
-  const videogames= useSelector(state=> state.videogames.backup)
-  console.log(videogames.imagen)
+  const videogames= useSelector(state=> state.videogames.current)
+
+
 // const  videogames =[ {name:"Portal 2 la leyenda del Caido",
 //   id:3,
 //   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
