@@ -149,7 +149,6 @@ router.post("/", async (req, res) => {
     generos,
   } = req.body;
   try {
-    console.log("soy feo yyyyyyyy");
     const [juego, created] = await Videogame.findOrCreate({
       where: {
         name: name,
@@ -167,7 +166,7 @@ router.post("/", async (req, res) => {
       res.status(200).json("El videojuego ya existe.");
     }
   } catch (err) {
-    res.status(500).json(err);
+    res.status(200).json("el videojuego no pudo ser creado");
   }
 });
 module.exports = router;

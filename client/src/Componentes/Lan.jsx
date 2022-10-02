@@ -8,11 +8,10 @@ import { useSelector} from "react-redux";
 import"./Lan.css"
 
 export default function Lan() {
+  const entrar=useSelector(state=>state.videogames);
 
-  const entrar=useSelector(state=>state.videogames)
   Revisar();
   return (
-
     <div className='Lan'>
         <div>
           <img className='Maquinita'  src={maquinita} alt="Img de Carga" />

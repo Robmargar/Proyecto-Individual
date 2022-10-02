@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import{getVideogames} from "../actions/videogamesActions";
+import{getVideogamesSearch} from "../actions/videogamesActions";
 import { useDispatch } from "react-redux";
 
 import "./Searchbar.css"
@@ -21,7 +21,8 @@ export default function Searchbar() {
     <form 
       onSubmit={(e)=>{
        e.preventDefault();
-      dispatch(getVideogames(data.name));
+      dispatch(getVideogamesSearch(data.name));
+      setData({name:""});
     }}> 
     
       <div className='Search'>

@@ -7,6 +7,8 @@ export const POST_VIDEOGAME = "POST_VIDEOGAME";
 export const ORDER_BY = "ORDER_BY";
 export const FILTER_BY = "FILTER_BY";
 export const CLEAN_STATE = "CLEAN_STATE";
+export const PAGINACION = "PAGINACION";
+export const CLEAN_CURRENT = "CLEAN_CURRENT";
 
 export function getVideogames(name) {
   return async (dispatch) => {
@@ -71,6 +73,23 @@ export function filterBy(data) {
     dispatch({
       type: FILTER_BY,
       payload: data,
+    });
+  };
+}
+
+export function paginacion(numero) {
+  return async (dispatch) => {
+    dispatch({
+      type: PAGINACION,
+      payload: numero,
+    });
+  };
+}
+
+export function cleanCurrent() {
+  return async (dispatch) => {
+    dispatch({
+      type: CLEAN_CURRENT,
     });
   };
 }

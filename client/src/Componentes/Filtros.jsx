@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import Mapear from './Mapear';
 import { orderBy , filterBy} from '../actions/videogamesActions';
 import { useDispatch,useSelector } from 'react-redux';
@@ -13,10 +13,10 @@ export default function Filtros() {
     const dispatch=useDispatch();
        const genres=useSelector(state=>state.app.genres);
   
-    const[data,setData]=useState({
-        name:"",
-        generos:[],
-    });
+    // const[data,setData]=useState({
+    //     name:"",
+    //     generos:[],
+    // });
     
  function handleOnChange(e){
     console.log(e.target.value)

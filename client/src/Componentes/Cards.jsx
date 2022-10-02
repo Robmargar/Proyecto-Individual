@@ -1,64 +1,73 @@
-
+import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import { useSelector} from "react-redux";
+import { useDispatch,useSelector} from "react-redux";
 import Card from './Card';
-
+import { paginacion } from '../actions/videogamesActions';
 
 import "./Cards.css"
-
+import "./Paginas.css"
 
 export default function Cards() {
 
-  const videogames= useSelector(state=> state.videogames.current)
+
+  const dispatch=useDispatch();
+  const cantidadGames= useSelector(state=> state.videogames.current);
+  const page= useSelector(state=> state.videogames.page);
+  const pags= cantidadGames && Math.ceil(cantidadGames.length/15); 
+  const arraypags=[];
 
 
-// const  videogames =[ {name:"Portal 2 la leyenda del Caido",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2 la leyenda del caido",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 3 Se juela Puertay me cai Bien GAchote",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-//   {name:"portal 2",
-//   id:3,
-//   imagen:"https://media.rawg.io/media/games/328/3283617cb7d75d67257fc58339188742.jpg",
-//   generos:["indi","Beto","Alejand","Samantha"]},
-// ];
 
-return (
-    <div className='Cards'>
-      {videogames.map((vg)=>(
-        <Link to={`/home/detalle/${vg.id}`} key={vg.name}>
-          <Card
-            key={vg.id}
-            name={vg.name}
-            img={vg.imagen}
-            genres={vg.generos}
-           />
-        </Link>
-      ))}
+  for(let i=0;i<pags;i++){
+      arraypags.push({number: i+1});
+  }
 
-    </div>
-  );
+  const [data, setData]=useState([]);
+
+  if(!data.length){
+    const mostrar=cantidadGames.slice(0,15);
+    setData(mostrar);
+  }
+
+  function handleOnChange(e){
+      let page=Number(e.target.name);
+      let nInicial=((Number(e.target.name)*15)-15);
+      let nFinal=(Number(e.target.name)*15);
+    
+      const mostrar=cantidadGames.slice(nInicial,nFinal);
+      console.log(nInicial+","+nFinal);
+      console.log(mostrar);
+      setData(mostrar);
+      dispatch(paginacion({page:page}));
+   }
+
+
+  useEffect(()=>{
+    const mostrar=cantidadGames.slice(0,15);
+    setData(mostrar);
+  },[cantidadGames]);
+
+
+ 
+ return (
+  <div>
+      <div>
+         {page !== 1 && <input type="submit" name={Number(page) - Number(1)} value="Prev" onClick={handleOnChange} className="Page" />}
+         {arraypags.map((pag) => (
+           <input key={pag.number} type="submit" name={pag.number} value={pag.number} onClick={handleOnChange} className="Page" />
+         ))}
+         {page !== cantidadGames && <input type="submit" name={Number(page) + Number(1)} value="Next" onClick={handleOnChange} className="Page" />}
+
+       </div><div className='Cards'>
+           {data.map((vg) => (
+             <Link to={`/home/detalle/${vg.id}`} key={vg.id}>
+               <Card
+                 name={vg.name}
+                 img={vg.imagen}
+                 genres={vg.generos} />
+             </Link>
+           ))}
+         </div>
+  </div>
+  )
 }

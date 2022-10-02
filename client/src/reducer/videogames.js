@@ -1,10 +1,12 @@
 import {
   CLEAN_STATE,
+  CLEAN_CURRENT,
   FILTER_BY,
   GET_VIDEOGAMES,
   GET_VIDEOGAMESSEARCH,
   GET_VIDEOGAMES_ID,
   ORDER_BY,
+  PAGINACION,
   POST_VIDEOGAME,
 } from "../actions/videogamesActions";
 
@@ -12,6 +14,8 @@ const INITIAL_STATE = {
   backup: [],
   current: [],
   gamedetail: {},
+  page: 1,
+  creado: "",
 };
 
 export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
@@ -38,7 +42,9 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
     case POST_VIDEOGAME:
       return {
         ...state,
-        current: payload,
+        page: 1,
+        backup: [...state.backup, payload],
+        creado: payload,
       };
 
     case ORDER_BY:
@@ -46,6 +52,7 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         case "A-->Z":
           return {
             ...state,
+            page: 1,
             current: state.current
               .slice()
               .sort((a, b) => (a.name > b.name ? 1 : -1)),
@@ -54,6 +61,7 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         case "Z-->A":
           return {
             ...state,
+            page: 1,
             current: state.current
               .slice()
               .sort((a, b) => (a.name < b.name ? 1 : -1)),
@@ -62,6 +70,7 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         case "Rating +":
           return {
             ...state,
+            page: 1,
             current: state.current
               .slice()
               .sort((a, b) => (a.raiting < b.raiting ? 1 : -1)),
@@ -70,6 +79,7 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         case "Rating -":
           return {
             ...state,
+            page: 1,
             current: state.current
               .slice()
               .sort((a, b) => (a.raiting > b.raiting ? 1 : -1)),
@@ -78,21 +88,15 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         case "Creado":
           return {
             ...state,
-            current: state.backup.filter((juego) => {
-              if (juego.id.length > 8) {
-                return juego;
-              }
-            }),
+            page: 1,
+            current: state.backup.filter((juego) => juego.id.length > 8),
           };
 
         case "Api":
           return {
             ...state,
-            current: state.backup.filter((juego) => {
-              if (!juego.id.length) {
-                return juego;
-              }
-            }),
+            page: 1,
+            current: state.backup.filter((juego) => !juego.id.length),
           };
 
         default:
@@ -103,19 +107,28 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
     case FILTER_BY:
       return {
         ...state,
-        current: state.backup.filter((juego) => {
-          console.log(juego.generos);
-          console.log("lo que recibo ------------->" + payload);
-          if (juego.generos.includes(payload)) {
-            console.log(juego.generos);
-            return juego;
-          }
-        }),
+        page: 1,
+        current: state.backup.filter((juego) =>
+          juego.generos.includes(payload)
+        ),
+      };
+
+    case PAGINACION:
+      return {
+        ...state,
+        page: payload.page,
+      };
+
+    case CLEAN_CURRENT:
+      return {
+        ...state,
+        current: [],
       };
 
     case CLEAN_STATE:
       return {
         ...state,
+        creado: "",
         gamedetail: {},
       };
 

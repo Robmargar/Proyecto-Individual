@@ -1,18 +1,18 @@
-import React,{useState} from 'react'
+import {useHistory} from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
 import Mapear from './Mapear';
-import { postVideogame } from '../actions/videogamesActions';
+import { cleanState, postVideogame } from '../actions/videogamesActions';
 import { useSelector, useDispatch } from "react-redux";
 
 import "./Form.css"
 
 export default function Formulario() {
     const dispatch=useDispatch();
+    const history=useHistory();
     const genres=useSelector(state=>state.app.genres);
-    const platforms=useSelector(state=>state.app.plataforms)
-   
-    
-//    const platforms=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"},{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
-//    const genres=[{name:"indi"}, {name:"adventure"},{ name:"shooter"}, {name:"meromero"}, {name:"puzzle"}, {name:"changuito"}, {name:"sobroson"}, {name:"spaguetti"},{name:"pasion"}, {name:"ahora"}, {name:"dices"}, {name:"reconocer"}, {name:"ayer"}, {name:"aplacar"},{name:"shalala"}];
+    const platforms=useSelector(state=>state.app.plataforms);
+    const respuesta=useSelector(state=>state.videogames.creado);
+ 
     const [data, setData]=useState({
         name: "",
         descripcion: "",
@@ -24,8 +24,18 @@ export default function Formulario() {
     
     const[errors, setErrors]=useState({});
     const[sinerrores, setSinErrores]=useState(false);
-    
-    // useEffect(()=>Validar(data),[data]);
+
+     
+    useEffect(()=>{
+        if(respuesta.name){
+         alert(`¡El videojuego: ${respuesta.name} fue creado!`);
+        }
+        else { 
+        if(respuesta !== ""){
+            alert("Lo sentimos:"+ respuesta);
+        }}
+            
+    },[respuesta]);
 
     function handleOnChange(e){
         // setErrors((prevErrors)=>{ return{...prevErrors, [e.target.name]:null}});
@@ -50,6 +60,8 @@ export default function Formulario() {
         // console.log(newData2);
     
     }
+
+  
     
     function boton(errors){
         if(Object.keys(errors).length !== 0 ){
@@ -96,20 +108,20 @@ export default function Formulario() {
         generos: []
     };
 
-  
+ 
     return (
     <div className='AllForm'>
         <form
-           
             onSubmit={(e)=>{
             e.preventDefault();  
             dispatch(postVideogame(data));
             e.target.reset();
             setData(def);
+            dispatch(cleanState);     
         }} 
         >
             <div>
-                {sinerrores &&<button type='submit' className='BtnEnviar'> Crear Videojuego</button>}
+                {sinerrores &&<button type='submit' className='BtnEnviar'> Crear Videojuego</button>}    
             </div> 
             <div  className="Form">
                 <div className='Closter'>

@@ -6,8 +6,7 @@ import "./Card.css"
 
 
 
-export default function Card({key,name,img,genres}){
-    console.log(img);
+export default function Card({name,img,genres}){
     if(!img) {
         img=defult;
       }
