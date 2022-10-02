@@ -1,5 +1,5 @@
-import {useHistory} from 'react-router-dom'
 import React,{useState,useEffect} from 'react'
+import { Link } from 'react-router-dom';
 import Mapear from './Mapear';
 import { cleanState, postVideogame } from '../actions/videogamesActions';
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +8,6 @@ import "./Form.css"
 
 export default function Formulario() {
     const dispatch=useDispatch();
-    const history=useHistory();
     const genres=useSelector(state=>state.app.genres);
     const platforms=useSelector(state=>state.app.plataforms);
     const respuesta=useSelector(state=>state.videogames.creado);
@@ -22,6 +21,8 @@ export default function Formulario() {
         generos: []
     });
     
+    const[creado,setCreado]=useState(false);
+
     const[errors, setErrors]=useState({});
     const[sinerrores, setSinErrores]=useState(false);
 
@@ -29,10 +30,12 @@ export default function Formulario() {
     useEffect(()=>{
         if(respuesta.name){
          alert(`¡El videojuego: ${respuesta.name} fue creado!`);
+         setCreado(true);
         }
         else { 
         if(respuesta !== ""){
             alert("Lo sentimos:"+ respuesta);
+            setCreado(true);
         }}
             
     },[respuesta]);
@@ -59,15 +62,14 @@ export default function Formulario() {
         Validar(newData2);
         // console.log(newData2);
     
-    }
+    };
 
-  
     
     function boton(errors){
         if(Object.keys(errors).length !== 0 ){
            return false;
         }else return true;
-    }
+    };
 
     function Validar(input){
     
@@ -98,7 +100,7 @@ export default function Formulario() {
         }
         setErrors(errors);
         setSinErrores(boton(errors));
-    }
+    };
     const def={
         name: "",
         descripcion: "",
@@ -111,13 +113,14 @@ export default function Formulario() {
  
     return (
     <div className='AllForm'>
+        {creado===false?
         <form
             onSubmit={(e)=>{
             e.preventDefault();  
             dispatch(postVideogame(data));
             e.target.reset();
             setData(def);
-            dispatch(cleanState);     
+            dispatch(cleanState());     
         }} 
         >
             <div>
@@ -191,7 +194,21 @@ export default function Formulario() {
                 </div>
             </div>
         
-        </form>
+        </form>:
+        <div>
+            <form onSubmit={(e)=>{
+            e.preventDefault();  
+            setData(def);
+            dispatch(cleanState());
+            setCreado(false);}}
+            >
+            {<h1>¿Desea crear un nuevo videojuego?</h1>}
+            <button type='submit' className='BtnEnviar'>SI</button>  
+            <Link to="/home">
+                <button type='submit' className='BtnEnviar'>NO</button>
+            </Link>
+            </form>
+        </div>}
     </div>   
   )
 }
