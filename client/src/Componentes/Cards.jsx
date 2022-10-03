@@ -5,7 +5,6 @@ import Card from './Card';
 import { paginacion } from '../actions/videogamesActions';
 
 import "./Cards.css"
-import "./Paginas.css"
 
 export default function Cards() {
 
@@ -35,8 +34,6 @@ export default function Cards() {
       let nFinal=(Number(e.target.name)*15);
     
       const mostrar=cantidadGames.slice(nInicial,nFinal);
-      console.log(nInicial+","+nFinal);
-      console.log(mostrar);
       setData(mostrar);
       dispatch(paginacion({page:page}));
    }
@@ -54,11 +51,12 @@ export default function Cards() {
       <div>
          {page !== 1 && <input type="submit" name={Number(page) - Number(1)} value="Prev" onClick={handleOnChange} className="Page" />}
          {arraypags.map((pag) => (
-           <input key={pag.number} type="submit" name={pag.number} value={pag.number} onClick={handleOnChange} className="Page" />
+           <input key={pag.number} type="submit" name={pag.number} value={pag.number} onClick={handleOnChange} className={`Page ${ Number(pag.number)===Number(page)?'act':''}`}/>
          ))}
          {page !== cantidadGames && <input type="submit" name={Number(page) + Number(1)} value="Next" onClick={handleOnChange} className="Page" />}
 
-       </div><div className='Cards'>
+       </div>
+       <div className='Cards'>
            {data.map((vg) => (
              <Link to={`/home/detalle/${vg.id}`} key={vg.id}>
                <Card
@@ -67,7 +65,12 @@ export default function Cards() {
                  genres={vg.generos} />
              </Link>
            ))}
-         </div>
+        </div>
+        {page !== 1 && <input type="submit" name={Number(page) - Number(1)} value="Prev" onClick={handleOnChange} className="Page" />}
+         {arraypags.map((pag) => (
+           <input key={pag.number} type="submit" name={pag.number} value={pag.number} onClick={handleOnChange} className={`Page ${ Number(pag.number)===Number(page)?'act':''}`}/>
+         ))}
+         {page !== cantidadGames && <input type="submit" name={Number(page) + Number(1)} value="Next" onClick={handleOnChange} className="Page" />}
   </div>
   )
 }

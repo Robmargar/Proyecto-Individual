@@ -25,6 +25,7 @@ export function videogamesReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         backup: payload,
         current: payload,
+        page:1,
       };
 
     case GET_VIDEOGAMESSEARCH:

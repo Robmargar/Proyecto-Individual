@@ -78,6 +78,9 @@ export default function Formulario() {
             errors.name="Nombre de Videojuego requerido";
             // verificar si existe o no 
         }
+        if(input.name.length<4){
+            errors.name="Longitud de nombre no adecuada"
+        }
 
         if(!input.descripcion){
             errors.descripcion="Descripción faltante"; 
@@ -130,6 +133,7 @@ export default function Formulario() {
                 <div className='Closter'>
                     <input
                     type="text"
+                    required minlength="4" maxlength="30"
                     className={errors.name? "Danger":"PlaceForm"}
                     placeholder="Nombre del Videojuego"
                     name="name"
@@ -152,6 +156,7 @@ export default function Formulario() {
                 <div className='Closter'>
                     <input
                     type= "text"
+                    required minLength="20" maxLength="600"
                     className={errors.descripcion? "Danger":"PlaceForm"}
                     placeholder="Descripción"
                     name="descripcion"
@@ -202,11 +207,16 @@ export default function Formulario() {
             dispatch(cleanState());
             setCreado(false);}}
             >
-            {<h1>¿Desea crear un nuevo videojuego?</h1>}
-            <button type='submit' className='BtnEnviar'>SI</button>  
-            <Link to="/home">
-                <button type='submit' className='BtnEnviar'>NO</button>
-            </Link>
+            
+            {<div className='Titulo'>¿Desea crear un nuevo videojuego?</div>}
+            <div className='Contenedor'>
+                <div>
+                    <button type='submit' className='BtnEnviar'>SI</button>  
+                </div>
+                <Link to="/home">
+                    <button type='submit' className='BtnEnviar'>NO</button>
+                </Link>
+            </div>
             </form>
         </div>}
     </div>   

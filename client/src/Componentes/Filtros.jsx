@@ -1,6 +1,6 @@
 import React from 'react';
 import Mapear from './Mapear';
-import { orderBy , filterBy} from '../actions/videogamesActions';
+import { orderBy , filterBy, getVideogames} from '../actions/videogamesActions';
 import { useDispatch,useSelector } from 'react-redux';
 
 
@@ -13,11 +13,10 @@ export default function Filtros() {
     const dispatch=useDispatch();
        const genres=useSelector(state=>state.app.genres);
   
-    // const[data,setData]=useState({
-    //     name:"",
-    //     generos:[],
-    // });
-    
+
+function handleOnGet(e){
+    dispatch(getVideogames())
+}
  function handleOnChange(e){
     console.log(e.target.value)
     dispatch(orderBy(e.target.value));
@@ -33,6 +32,7 @@ export default function Filtros() {
     return (
     <div>
         <div>
+            <button type='submit' className='GetAll' onClick={handleOnGet}>TRAER TODOS</button>
             <h2 className='TitleF'>ORDENAMIENTO</h2>
             <div>
                 <div className='TitleOrden'>Nombre</div>

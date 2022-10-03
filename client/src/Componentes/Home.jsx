@@ -12,7 +12,7 @@ export default function Home() {
   
   const gen = useSelector(state => state.app.genres);
   const plat = useSelector(state => state.app.plataforms);
-  const vid= useSelector(state=> state.videogames.current)
+  const vid= useSelector(state=> state.videogames.current);
 
   dispatch(cleanState());
 

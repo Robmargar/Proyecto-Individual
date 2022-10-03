@@ -12,7 +12,7 @@ export default function Header() {
   return (
     <header className='Back'>
         <div className='Header'>
-          <Link to="/home" ><img src={pacman} alt="Logo" className='Pcman' /></Link>
+          <Link to="/" ><img src={pacman} alt="Logo" className='Pcman' /></Link>
           <Searchbar />
         </div> 
         <Nav/>

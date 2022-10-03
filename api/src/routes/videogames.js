@@ -88,7 +88,7 @@ router.get("/", async (req, res) => {
 
       //------- Junto los datos de la API(infoapi) y de la BD(infobd) -------
 
-      const respuesta = [...infoapi, ...infobd];
+      const respuesta = [...infobd, ...infoapi];//<----------------******
       console.log("numero de videojuegos traidos");
       console.log(respuesta.length);
       res.status(200).json(respuesta);
@@ -99,8 +99,8 @@ router.get("/", async (req, res) => {
   }
 });
 
+// ------------------https://api.rawg.io/api/games/{id}------------------
 router.get("/:id", async (req, res) => {
-  // ------------------https://api.rawg.io/api/games/{id}------------------
   // se pide por  params
   const { id } = req.params;
   try {
