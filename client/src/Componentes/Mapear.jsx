@@ -25,7 +25,7 @@ export default function Mapear({type,items,subtype,handleOnChangeBox}) {
         <div className='Generoscheck'>        
             {items.map((item)=>(
               <div key={item.id}>
-                <input type="checkbox" name={subtype} value={item.name} id={item.id} onChange={handleChanges}/>
+                <input type="checkbox" name={subtype} value={item.id} id={item.id} onChange={handleChanges}/>
                 <label>{item.name}</label><br/>
               </div>
             ))}

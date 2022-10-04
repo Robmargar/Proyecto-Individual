@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Router } = require("express");
 const router = Router();
-const { Videogame } = require("../db.js");
+const { Videogame, Genre } = require("../db.js");
 
 const API_KEY = "da38c86359b946108a9c60c9030353b2";
 
@@ -10,7 +10,16 @@ router.get("/", async (req, res) => {
   try {
     // res.status(200).send("hellow bf");
     //------- Pido los Games a la BD -------
-    const infobd = await Videogame.findAll();
+    let infobd = await Videogame.findAll({ include: Genre });
+
+    infobd = JSON.stringify(infobd);
+    infobd = JSON.parse(infobd);
+    // infobd.generos = infobd.genres.map((gen) => gen.name);
+    infobd.forEach((element) => {
+      element.generos = element.genres.map((g) => g.name);
+      element.genres = null;
+    });
+    console.log(infobd);
 
     //------------- https://api.rawg.io/api/games?search={game}----------------
     // se piden por query
@@ -88,7 +97,7 @@ router.get("/", async (req, res) => {
 
       //------- Junto los datos de la API(infoapi) y de la BD(infobd) -------
 
-      const respuesta = [...infobd, ...infoapi];//<----------------******
+      const respuesta = [...infobd, ...infoapi]; //<----------------******
       console.log("numero de videojuegos traidos");
       console.log(respuesta.length);
       res.status(200).json(respuesta);
@@ -124,12 +133,18 @@ router.get("/:id", async (req, res) => {
       // console.log(respuesta);
       res.status(200).json(respuesta);
     } else {
-      respuesta = await Videogame.findByPk(id);
+      respuesta = await Videogame.findByPk(id, {
+        include: Genre,
+      });
       if (respuesta === null) {
         return res
           .status(404)
           .send(`No se encontraron coincidencias con el id: ${id}`);
       } else {
+        respuesta = JSON.stringify(respuesta);
+        respuesta = JSON.parse(respuesta);
+        respuesta.generos = respuesta.genres.map((gen) => gen.name);
+        respuesta.genres = null;
         res.status(200).json(respuesta);
       }
     }
@@ -156,9 +171,9 @@ router.post("/", async (req, res) => {
         fecha_lanzamiento: fecha_lanzamiento,
         raiting: raiting,
         plataformas,
-        generos,
       },
     });
+    await juego.setGenres(generos); // relaciono ID genres al juego creado
     if (created) {
       console.log("JUEGO CREADO");
       res.status(200).json(juego);
