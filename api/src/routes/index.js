@@ -5,6 +5,7 @@ const { Router } = require("express");
 const videogames = require("./videogames");
 const genres = require("./genres");
 const plataforms = require("./plataforms.js");
+const users = require("./users.js")
 
 const router = Router();
 
@@ -13,6 +14,7 @@ const router = Router();
 
 router.use("/genres", genres);
 router.use("/plataforms", plataforms);
-router.use("/videogames", videogames);
+router.use("/vidseogames", videogames);
+router.use("/users", users);
 
 module.exports = router;
