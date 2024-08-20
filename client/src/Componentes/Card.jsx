@@ -1,4 +1,4 @@
-import {React} from 'react'
+import React from 'react'
 import Mapear from "./Mapear";
 import defult from "../imagenes/default.jpg"
 import "./Card.css"

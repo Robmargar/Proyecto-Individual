@@ -99,7 +99,7 @@ router.get("/", async (req, res) => {
 
       const respuesta = [...infobd, ...infoapi]; //<----------------******
       console.log("numero de videojuegos traidos");
-      console.log(respuesta.length);
+      console.log(respuesta);
       res.status(200).json(respuesta);
     }
   } catch (err) {
