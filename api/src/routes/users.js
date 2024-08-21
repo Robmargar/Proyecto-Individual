@@ -6,10 +6,13 @@ const router = Router();
 
 // ------ Pedir Usuario a la BD ------
 router.get("/:email", async (req, res) => {
+  const { email } = req.params;
+  console.log(email);
   try {
     const user = await User.findOne({
       where: { email: email },
     });
+    console.log(user);
     if (user === null) {
       return res.send("Usuario no encontrado");
     } else {
@@ -34,7 +37,6 @@ router.post("/", async (req, res) => {
     });
     if (created) {
       console.log("Usuario CREADO");
-      sendRegisterMail(usuario);
       res.status(200).json(usuario);
     } else {
       res.status(200).json("El Usuario ya existe.");
