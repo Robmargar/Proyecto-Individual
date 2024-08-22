@@ -21,9 +21,11 @@ const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const fillGenres = require("../api/src/funciones/fillGenres");
 const fillPlataforms = require("../api/src/funciones/fillPlataforms");
+const fillVideogames = require("../api/src/funciones/fillVideogames");
 
- fillGenres();
- fillPlataforms();
+//  fillGenres();
+//  fillPlataforms();
+// fillVideogames();
 
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(() => {

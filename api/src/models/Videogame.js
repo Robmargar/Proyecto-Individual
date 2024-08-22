@@ -17,26 +17,31 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
-      descripcion: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
+     
       fecha_lanzamiento: {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      raiting: {
+      rating: {
         type: DataTypes.DECIMAL(3, 2),
         allowNull: true,
       },
       plataformas: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+        allowNull: true,
       },
-      // generos: {
-      //   type: DataTypes.ARRAY(DataTypes.STRING),
-      //   allowNull: false,
-      // },
+      generos: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
+      },
+      imagen: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      video: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       timestamps: true,

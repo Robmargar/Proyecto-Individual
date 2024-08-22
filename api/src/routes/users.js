@@ -7,12 +7,10 @@ const router = Router();
 // ------ Pedir Usuario a la BD ------
 router.get("/:email", async (req, res) => {
   const { email } = req.params;
-  console.log(email);
   try {
     const user = await User.findOne({
       where: { email: email },
     });
-    console.log(user);
     if (user === null) {
       return res.send("Usuario no encontrado");
     } else {
@@ -43,6 +41,23 @@ router.post("/", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.put("/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { name, last_name } = req.body;
+    const editdUser = await User.update(
+      {
+        name: name,
+        last_name: last_name,
+        email: email,
+      },
+      { where: { email: email } }
+    );
+  } catch (err) {
     res.status(500).json(err);
   }
 });

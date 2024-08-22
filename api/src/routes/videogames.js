@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
           } else {
             res
               .status(200)
-              .json(`No existen videojugos con el nombre: "${req.query.name}"`);
+              .json(`No existen videojuegos con el nombre: "${req.query.name}"`);
           }
         } else {
           const juegosapi = respuesta.data.results.map((e) => {
@@ -94,6 +94,7 @@ router.get("/", async (req, res) => {
           generos: e.genres.map((gen) => gen.name),
         };
       });
+      
 
       //------- Junto los datos de la API(infoapi) y de la BD(infobd) -------
 
@@ -159,7 +160,7 @@ router.post("/", async (req, res) => {
     name,
     descripcion,
     fecha_lanzamiento,
-    raiting,
+    rating,
     plataformas,
     generos,
   } = req.body;
@@ -169,7 +170,7 @@ router.post("/", async (req, res) => {
         name: name,
         descripcion: descripcion,
         fecha_lanzamiento: fecha_lanzamiento,
-        raiting: raiting,
+        rating: rating,
         plataformas,
       },
     });
