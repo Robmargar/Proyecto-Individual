@@ -14,6 +14,11 @@ export default function Header() {
         <div className='Header'>
           <Link to="/" ><img src={pacman} alt="Logo" className='Pcman' /></Link>
           <Searchbar />
+          <div>
+            <div>
+            <Link to="/home/inicio" >Iniciar Sesion</Link>
+            </div>
+          </div>
         </div> 
         <Nav/>
        
