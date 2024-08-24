@@ -185,4 +185,6 @@ router.post("/", async (req, res) => {
     res.status(200).json("el videojuego no pudo ser creado");
   }
 });
+
+
 module.exports = router;

@@ -1,8 +1,7 @@
 const { Router } = require("express");
+const router = Router();
 const { User } = require("../db.js");
 const { where } = require("sequelize");
-
-const router = Router();
 
 // ------ Pedir Usuario a la BD ------
 router.get("/:email", async (req, res) => {
@@ -44,6 +43,7 @@ router.post("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.put("/:email", async (req, res) => {
   try {

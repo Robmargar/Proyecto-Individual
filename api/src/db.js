@@ -48,8 +48,8 @@ Videogame.belongsToMany(Genre, { through: "videogame_genre" });
 Genre.belongsToMany(Videogame, { through: "videogame_genre" });
 
 //--------Relación muchos a muchos entre Users y Videogames
-User.belongsToMany(Videogame, { through: "videogame_genre" });
-Videogame.belongsToMany(User, { through: "videogame_genre" });
+User.belongsToMany(Videogame, { through: "videogame_user" });
+Videogame.belongsToMany(User, { through: "videogame_user" });
 
 // Videogame.belongsToMany(Plataform, { through: "videogame_genre" });
 // Plataform.belongsToMany(Videogame, { through: "videogame_genre" });
