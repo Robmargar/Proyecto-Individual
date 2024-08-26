@@ -16,12 +16,11 @@ export default function Header() {
           <Searchbar />
           <div>
             <div>
-            <Link to="/home/inicio" >Iniciar Sesion</Link>
+            <Link to="/home/inicio">Iniciar Sesion</Link>
             </div>
           </div>
         </div> 
-        <Nav/>
-       
+        <Nav/>     
     </header>
   )
 }

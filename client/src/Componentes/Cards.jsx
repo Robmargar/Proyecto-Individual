@@ -58,12 +58,13 @@ export default function Cards() {
        </div>
        <div className='Cards'>
            {data.map((vg) => (
-             <Link to={`/home/detalle/${vg.id}`} key={vg.id}>
+             
                <Card
                  name={vg.name}
                  img={vg.imagen}
-                 genres={vg.generos} />
-             </Link>
+                 genres={vg.generos}
+                 id={vg.id} />
+             
            ))}
         </div>
         {page !== 1 && <input type="submit" name={Number(page) - Number(1)} value="Prev" onClick={handleOnChange} className="Page" />}

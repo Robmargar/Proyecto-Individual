@@ -20,7 +20,6 @@ function handleOnGet(e){
  function handleOnChange(e){
     console.log(e.target.value)
     dispatch(orderBy(e.target.value));
-
  }
 
  function handleOnChangeGenres(e){
