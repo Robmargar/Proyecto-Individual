@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
   const { userId } = req.body;
   try {
     const usuarioVid = await encontrarUsuario(userId);
+    console.log(usuarioVid);
     res.status(200).json(usuarioVid.videogames);
   } catch (err) {
     res.status(500).json(err);

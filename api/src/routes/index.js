@@ -14,7 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/plataforms", plataforms);
-router.use("/vidseogames", videogames);
+router.use("/videogames", videogames);
 router.use("/genres", genres);
 router.use("/users", users);
 router.use("/like", like);
