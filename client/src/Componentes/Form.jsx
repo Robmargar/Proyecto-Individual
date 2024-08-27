@@ -22,7 +22,6 @@ export default function Formulario() {
     });
     
     const[creado,setCreado]=useState(false);
-
     const[errors, setErrors]=useState({});
     const[sinerrores, setSinErrores]=useState(false);
 
@@ -104,6 +103,7 @@ export default function Formulario() {
         setErrors(errors);
         setSinErrores(boton(errors));
     };
+    
     const def={
         name: "",
         descripcion: "",
