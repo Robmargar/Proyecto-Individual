@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { User, Videogame } = require("../db.js");
-const { where } = require("sequelize");
+
 
 async function encontrarUsuario(userId) {
   const usuarioVid = await User.findOne({
@@ -19,14 +19,14 @@ async function encontrarUsuario(userId) {
       },
     ],
   });
+ 
   return usuarioVid;
 }
 // ------ Obtener listado de videojuegos likeados ------
-router.get("/", async (req, res) => {
-  const { userId } = req.body;
+router.get("/:userId", async (req, res) => {
+  const {userId} = req.params;
   try {
     const usuarioVid = await encontrarUsuario(userId);
-    console.log(usuarioVid);
     res.status(200).json(usuarioVid.videogames);
   } catch (err) {
     res.status(500).json(err);
@@ -34,7 +34,8 @@ router.get("/", async (req, res) => {
 });
 
 // ------ Poner o quitar like de un videojuego ------
-router.post("/", async (req, res) => {
+router.post("/likepost", async (req, res) => {
+  
   const { userId, videogameId } = req.body;
   try {
     const usuarioVid = await encontrarUsuario(userId);
@@ -44,6 +45,7 @@ router.post("/", async (req, res) => {
       : usuarioVid.addVideogames(videogameId);
     res.status(200).json(found);
   } catch (err) {
+    console.log("error del post");
     res.status(500).json(err);
   }
 });

@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
       element.generos = element.genres.map((g) => g.name);
       element.genres = null;
     });
-    console.log(infobd);
+    // console.log(infobd);
 
     //------------- https://api.rawg.io/api/games?search={game}----------------
     // se piden por query
@@ -38,7 +38,9 @@ router.get("/", async (req, res) => {
           } else {
             res
               .status(200)
-              .json(`No existen videojuegos con el nombre: "${req.query.name}"`);
+              .json(
+                `No existen videojuegos con el nombre: "${req.query.name}"`
+              );
           }
         } else {
           const juegosapi = respuesta.data.results.map((e) => {
@@ -94,13 +96,11 @@ router.get("/", async (req, res) => {
           generos: e.genres.map((gen) => gen.name),
         };
       });
-      
 
       //------- Junto los datos de la API(infoapi) y de la BD(infobd) -------
 
       const respuesta = [...infobd, ...infoapi]; //<----------------******
       console.log("numero de videojuegos traidos");
-      console.log(respuesta);
       res.status(200).json(respuesta);
     }
   } catch (err) {
@@ -156,19 +156,12 @@ router.get("/:id", async (req, res) => {
 
 //------------------------POST----------------------------
 router.post("/", async (req, res) => {
-  const {
-    name,
-    descripcion,
-    fecha_lanzamiento,
-    rating,
-    plataformas,
-    generos,
-  } = req.body;
+  const { name, fecha_lanzamiento, rating, plataformas, generos } = req.body;
+  console.log(req.body);
   try {
     const [juego, created] = await Videogame.findOrCreate({
       where: {
         name: name,
-        descripcion: descripcion,
         fecha_lanzamiento: fecha_lanzamiento,
         rating: rating,
         plataformas,
@@ -182,9 +175,9 @@ router.post("/", async (req, res) => {
       res.status(200).json("El videojuego ya existe.");
     }
   } catch (err) {
-    res.status(200).json("el videojuego no pudo ser creado");
+    console.log(err);
+    res.status(500).json("el videojuego no pudo ser creado");
   }
 });
-
 
 module.exports = router;
