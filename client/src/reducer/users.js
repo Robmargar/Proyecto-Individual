@@ -5,28 +5,24 @@ import {
   POST_LIKE,
 } from "../actions/usersActions.js";
 
-const INITIAL_STATE = {
-  backup: [],
-  current: [],
+const INITIAL_USER_STATE = {
+  user: {},
   likes: [],
   userdetail: {},
-  creado: "",
 };
 
-export function userReducer(state = INITIAL_STATE, { type, payload }) {
+export function userReducer(state = INITIAL_USER_STATE, { type, payload }) {
   switch (type) {
     case GET_USER_EMAIL:
       return {
         ...state,
-        backup: payload,
-        current: payload,
+        userdetail: payload,
       };
 
     case POST_USER_EMAIL:
       return {
         ...state,
-        backup: payload,
-        current: payload,
+        user: payload,
       };
     case GET_LIKE:
       return {
@@ -38,5 +34,8 @@ export function userReducer(state = INITIAL_STATE, { type, payload }) {
         ...state,
         likes: payload,
       };
+
+    default:
+      return state;
   }
 }

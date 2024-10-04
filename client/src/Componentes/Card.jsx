@@ -15,35 +15,29 @@ import { useDispatch } from "react-redux";
 export default function Card({name,img,genres,id}){
     const dispatch=useDispatch();
     const [data, setData]=useState({
-        id:"",
-        name: "",
+        videogameId:id,
+        userId: "a4a4b7cc-3896-44f5-b418-07e542f7d6f5",
         like:"0"
     });
     
     function handleOnChange(e){
         let newData= {...data};
-        console.log(data.like)
         data.like==="0"?
          newData={...data,like:"1"}:newData={...data,like:"0"}
         setData(newData);
+        dispatch(postlike(data));
+
        
     };
     if(!img) {
         img=defult;
       }
     return (
-        <button
-        
-         className="Card">
-            <button
-                  onSubmit={(e)=>{
-                    e.preventDefault();  
-                    dispatch(postlike(data));
-                     }}
-             className='Heart-butn' onClick={handleOnChange}>
+        <button className="Card">
+            <button onClick={handleOnChange} className='Heart-butn' >
                 {
                     data.like==="1"?
-                        <img className="Heart" name="1" src={heart2} alt="corazon_like_lleno"/>
+                        <img className="Heart" name="1" src={heart2}  alt="corazon_like_lleno"/>
                     :
                         <img className="Heart" name="0" src={heart} alt="corazon_like"/>
                 }

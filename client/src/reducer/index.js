@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { videogamesReducer } from "./videogames";
 import { GET_VALUES, SET_APP_IS_LOADING } from "../actions/appActions";
+import { userReducer } from "./users";
 
 const INICIAL_STATE = {
   plataforms: [],
@@ -31,4 +32,5 @@ function appReducer(state = INICIAL_STATE, { type, payload }) {
 export const rootReducer = combineReducers({
   app: appReducer,
   videogames: videogamesReducer,
+  user: userReducer,
 });

@@ -16,7 +16,7 @@ export default function Formulario() {
         name: "",
         descripcion: "",
         fecha_lanzamiento: "",
-        raiting: "",
+        rating: "",
         plataformas: [],
         generos: []
     });
@@ -89,8 +89,8 @@ export default function Formulario() {
             errors.fecha_lanzamiento="Fecha faltante"; 
         }
 
-        if(!input.raiting){
-            errors.raiting="Raiting faltante"; 
+        if(!input.rating){
+            errors.rating="Rating faltante"; 
         }
 
         if(input.generos.length<=0){
@@ -108,7 +108,7 @@ export default function Formulario() {
         name: "",
         descripcion: "",
         fecha_lanzamiento: "",
-        raiting: "",
+        rating: "",
         plataformas: [],
         generos: []
     };
@@ -167,21 +167,21 @@ export default function Formulario() {
                 </div>
 
                 <div className='AllRait'>
-                    <h1 className={errors.raiting? "Error":"CheckForm"} >Rating</h1>
+                    <h1 className={errors.rating? "Error":"CheckForm"} >Rating</h1>
                     <input className='Rait'
                     id="rating"
                     type="range"
-                    name="raiting"
-                    value={data.raiting}
+                    name="rating"
+                    value={data.rating}
                     min="0"
                     max="5"
                     step="0.01"
                     onChange={handleOnChange}
                     />
                     <div >
-                        <output htmlFor="id">{data.raiting}</output>
+                        <output htmlFor="id">{data.rating}</output>
                     </div>
-                    {/* {errors.raiting && <span>"{errors.raiting}"</span>} */}
+                    {/* {errors.rating && <span>"{errors.rating}"</span>} */}
                 </div>
 
 

@@ -9,7 +9,7 @@ export default function Revisar() {
   
     const gen = useSelector(state => state.app.genres);
     const plat = useSelector(state => state.app.plataforms);
-    const vid= useSelector(state=> state.videogames.backup)
+    const vid= useSelector(state=> state.videogames.backup);
     
       useEffect(() => {
         if(gen.length===0){

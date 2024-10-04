@@ -1,5 +1,21 @@
+.Card{
+    position:relative;
+    border-radius: 25px;
+    height: 500px;
+    width: 300px;
+    background-color: rgba(59, 58, 58, 0.493);
+    border: 1px solid rgba(155, 226, 40, 0.849);
+    z-index: 0;
+    text-decoration: none;
+  }
+
+.Card:hover{
+    background-color: rgba(97, 95, 95, 0.836);
+    transition: background-color 50ms;
+   } 
+
 .Name{
-    font-size: 22px;
+    font-size: 20px;
     color:rgb(226, 214, 214);
     align-items: center;
     height: 50px ;
@@ -36,25 +52,9 @@
   width: 35px;
 }  
 
-.Card{
-    position:relative;
-    border-radius: 25px;
-    height: 5
-    00px;
-    width: 270px;
-    background-color: rgba(59, 58, 58, 0.493);
-    border: 1px solid rgba(155, 226, 40, 0.849);
-    z-index: 0;
-    text-decoration: none;
-  }
-
-.Card:hover{
-    border: 3px solid rgba(155, 226, 40, 0.849);
-    background-color: rgba(59, 58, 58, 0.664);
-    transition: background-color 50ms;
-   } 
 
 .SubTitle{
     font-size: 1.25rem;
+    margin-bottom: 10px;
     color: rgb(226, 214, 214);
-  }
+}

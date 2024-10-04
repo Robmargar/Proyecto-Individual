@@ -10,6 +10,7 @@ import VideogameDetails from "./Componentes/VideogameDetails";
 import Formulario from "./Componentes/Form";
 import InicioSesion from "./Componentes/InicioSesion.jsx";
 import Perfil from "./Componentes/Perfil.jsx";
+import Likes from "./Componentes/Like.jsx";
 import NotFound from "./Componentes/NotFound.jsx";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <BrowserRouter>
           <Route path="/home" component={Header} />
           <Switch>
-            <Route exact path="/" component={Lan} />
+            {/* <Route exact path="/" component={Lan} /> */}
             <Route path="/home" exact>
               <Home />
             </Route>
@@ -35,6 +36,7 @@ function App() {
               <InicioSesion />
             </Route>
             <Route path="/home/perfil" component={Perfil} exact />
+            <Route path="/home/perfil/likes" component={Likes} exact />
             <Route component={NotFound} />
           </Switch>
         </BrowserRouter>

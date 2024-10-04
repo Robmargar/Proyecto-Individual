@@ -29,7 +29,7 @@ export function postUserEmail(data) {
 
 export function getlike(data) {
   return async (dispatch) => {
-    const response = await axios(`http://localhost:3001/like`, data);
+    const response = await axios(`http://localhost:3001/like/${data.userId}`);
     console.log(response.data);
     dispatch({
       type: GET_LIKE,
@@ -40,8 +40,10 @@ export function getlike(data) {
 
 export function postlike(data) {
   return async (dispatch) => {
-    const response = await axios(`http://localhost:3001/like`, data);
-    console.log(response.data);
+    const response = await axios.post(
+      `http://localhost:3001/like/likepost`,
+      data
+    );
     dispatch({
       type: POST_LIKE,
       payload: response.data,
