@@ -55,14 +55,16 @@ export default function Cards() {
          {page !== cantidadGames && <input type="submit" name={Number(page) + Number(1)} value="Next" onClick={handleOnChange} className="Page" />}
 
        </div>
-       <div className='Cards'>
+       <div className='Cards' >
            {data.map((vg) => (
              
                <Card
                  name={vg.name}
                  img={vg.imagen}
                  genres={vg.generos}
-                 id={vg.id} />
+                 id={vg.id} 
+                 key={vg.id}
+                 />
              
            ))}
         </div>

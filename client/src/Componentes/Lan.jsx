@@ -1,7 +1,7 @@
-import {React} from 'react';
+import React from 'react';
 import Revisar from '../funciones/revisar';
-import maquinita from '../imagenes/maquinita.jpg';
 import loading2 from '../imagenes/loading2.gif';
+import maquinita from '../imagenes/maquinita.jpg';
 import { Link } from 'react-router-dom';
 import { useSelector} from "react-redux";
 

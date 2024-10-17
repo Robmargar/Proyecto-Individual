@@ -1,0 +1,72 @@
+.Container{
+    width: 650px;
+    margin:4rem auto;
+    justify-content: center;
+}
+.Box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgb(136, 51, 51);
+    height: 650px;
+    border-radius: 1rem;
+    margin: 2rem;
+}
+
+.Place{
+    margin: 0.5rem;
+    width: 400px;
+}
+
+.Boton{
+    color: blue;
+    background-color: rgb(rgb(143, 44, 44), rgb(70, 121, 70), rgb(86, 86, 153));
+    margin-bottom: 1rem;
+}
+
+.Boton:hover{
+    cursor: pointer;
+    background: rgb(191, 205, 235);
+
+}
+.Img_Perfil{
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
+}
+
+.Registro{
+    width: 15rem;
+    height: 2.5rem;
+    padding: 0.25rem;
+    margin-bottom: 0.5rem;
+    border-radius: 20px;
+    border: none;
+    font-size: medium;
+}
+.Registro:hover{
+    cursor: pointer;
+    background: rgb(191, 205, 235);
+}
+
+.Icono{
+    background: none;
+    border: none;
+}
+
+.Icono:hover{
+    cursor: pointer;
+}
+
+.Sesion-Icono{
+    height:2.75rem;
+    border-radius: 0.5rem;
+    background: rgba(247, 226, 226, 0.973);
+}
+
+
+p{
+    margin-bottom: 1rem;
+}
+
