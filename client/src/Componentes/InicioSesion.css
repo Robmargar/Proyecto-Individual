@@ -1,4 +1,5 @@
 .Container{
+    height: 90%;
     width: 650px;
     margin:4rem auto;
     justify-content: center;
@@ -8,9 +9,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgb(136, 51, 51);
-    height: 650px;
-    border-radius: 1rem;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #7d0000, #690000);
+    box-shadow:  8px 8px 20px #310000,
+                 -8px -8px 20px #f11313;
+    height: 750px;
     margin: 2rem;
 }
 
