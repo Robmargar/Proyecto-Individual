@@ -1,33 +1,38 @@
 .Lan{
-  position: relative;
-  margin-top: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  margin:auto;
   justify-content: center;
 }
 
-.LanBtn:hover{
-    background-color: rgb(251, 255, 1);
-    color:black;
-    border: 9px inset;
+.LanBtn, .load{
+  position: relative;
+  margin-bottom: 35rem;
+  color: antiquewhite;
+  z-index: 10;
+  font-size: 30px;
+  width: 400px;
+  height: 60px;
+  border-radius: 69px;
+  background: #2d3143;
+  box-shadow:  7px 2px 14px #1d1f2b,
+              -7px -2px 14px #3d435b;
 }
 
-.LanBtn{
-  position: relative;
-    background-color: rgb(252, 248, 42);
-    border-radius: 15px;
-    font-size: 30px;
-    color:rgb(71, 71, 6);
-    width: 400px;
-    height: 60px;
-    border: 5px outset;
-    border-color: black;  
-}
-.load{
-  position:relative;
-  display: flex;
-  margin-left: 32rem;
+.LanBtn:hover{
+  border-radius: 69px;
+    background: #212431;
+    box-shadow: inset 7px 7px 14px #15171f,
+    inset -7px -7px 14px #2d3143;
 }
 
 .Maquinita{
-  position:relative;
+  position:absolute;
+  height: 70vh;
   margin-top: 0px;
+  z-index: 1;
 }

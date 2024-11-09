@@ -18,5 +18,14 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // Insertar aquí las credenciales que se importaron al archivo de variables de entorno
 // Initialize Firebase
+
+const firebaseConfig = {
+    apiKey: "AIzaSyAzGJ3njrtUaXFXHpMrZYfd-6JLZjBC2oo",
+    authDomain: "crazy-videogames.firebaseapp.com",
+    projectId: "crazy-videogames",
+    storageBucket: "crazy-videogames.appspot.com",
+    messagingSenderId: "167237620437",
+    appId: "1:167237620437:web:a63081c08e5cf50fb8c85c"
+  };
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
